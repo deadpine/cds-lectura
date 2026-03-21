@@ -51,12 +51,14 @@ export function useAppData() {
     const trimmed = name.trim();
     if (!trimmed || isFull) return;
     await supabase.from("signups").insert({ name: trimmed });
+    await fetchAll();
   }
 
   async function addWaitlist(name: string) {
     const trimmed = name.trim();
     if (!trimmed) return;
     await supabase.from("waitlist").insert({ name: trimmed });
+    await fetchAll();
   }
 
   async function updateMeeting(meeting: AppData["meeting"]) {
@@ -67,12 +69,14 @@ export function useAppData() {
       book_title: meeting.bookTitle,
       book_url: meeting.bookUrl,
     }).eq("id", 1);
+    await fetchAll();
   }
 
   async function editSignup(index: number, newName: string) {
     const id = signupIds[index];
     if (!id) return;
     await supabase.from("signups").update({ name: newName.trim() }).eq("id", id);
+    await fetchAll();
   }
 
   async function deleteSignup(index: number) {
@@ -86,18 +90,21 @@ export function useAppData() {
         supabase.from("waitlist").delete().eq("id", waitlistIds[0]),
       ]);
     }
+    await fetchAll();
   }
 
   async function editWaitlist(index: number, newName: string) {
     const id = waitlistIds[index];
     if (!id) return;
     await supabase.from("waitlist").update({ name: newName.trim() }).eq("id", id);
+    await fetchAll();
   }
 
   async function deleteWaitlist(index: number) {
     const id = waitlistIds[index];
     if (!id) return;
     await supabase.from("waitlist").delete().eq("id", id);
+    await fetchAll();
   }
 
   return {
