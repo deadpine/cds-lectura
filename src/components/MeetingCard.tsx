@@ -48,40 +48,27 @@ export default function MeetingCard({ meeting }: Props) {
       : meeting.timeStart ? `${meeting.timeStart}hs` : "";
 
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm space-y-3 text-center">
-      <div>
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Próximo encuentro</p>
-        {meeting.bookTitle ? (
-          meeting.bookUrl ? (
-            <a
-              href={meeting.bookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-800 font-medium underline underline-offset-2 decoration-gray-300 hover:decoration-gray-600 transition-colors"
-            >
-              {meeting.bookTitle}
-            </a>
-          ) : (
-            <p className="text-gray-800 font-medium">{meeting.bookTitle}</p>
-          )
-        ) : (
-          <p className="text-gray-400 italic">Próximamente...</p>
-        )}
-      </div>
-      <div>
-        <p className="text-gray-800 font-medium">
+    <div className="py-4 text-center space-y-1">
+    
+      <p className="text-xs text-gray-500">Próximo encuentro</p>
+      
+      <div className="space-y-1 py-2">
+        <p className="text-2xl font-semibold text-gray-900">{meeting.bookTitle}</p>
+        <p className="text-gray-600">
           {formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}{timeRange ? `, ${timeRange}` : ""}
         </p>
-        {relativeLabel && (
-          <span className={`inline-block mt-1.5 text-xs font-medium px-2 py-0.5 rounded-full ${
-            relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
-            relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
-            "bg-amber-100 text-amber-700"
-          }`}>
-            {relativeLabel}
-          </span>
-        )}
       </div>
+      
+      {relativeLabel && (
+        <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
+          relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
+          relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
+          "bg-amber-100 text-amber-700"
+        }`}>
+          {relativeLabel}
+        </span>
+      )}
+    
     </div>
   );
 }

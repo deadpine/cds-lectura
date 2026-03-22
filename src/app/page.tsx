@@ -18,12 +18,12 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-lg mx-auto px-4 py-12 flex flex-col gap-8">
-        <header className="text-center">
-          
-        </header>
-
+    <main className="min-h-screen bg-gray-50 py-12 px-4">
+      <header className="text-center">
+      </header>
+      
+      <div className="max-w-lg mx-auto flex flex-col gap-6 bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+        
         <MeetingCard meeting={data.meeting} />
 
         <section className="space-y-0">
@@ -36,13 +36,12 @@ export default function HomePage() {
         {isFull && (
           <WaitlistSection waitlist={data.waitlist} onAdd={addWaitlist} />
         )}
-
-        <footer className="text-center pt-4">
-          <a href="/admin" className="text-xs text-gray-300 hover:text-gray-500 transition-colors">
-            admin
-          </a>
-        </footer>
       </div>
+      <footer className="text-center pt-8">
+        <a href="/admin" className="text-xs text-gray-300 hover:text-gray-500 transition-colors">
+          admin
+        </a>
+      </footer>
     </main>
   );
 }
