@@ -62,7 +62,7 @@ export default function AdminNameList({ names, onEdit, onDelete }: Props) {
   }
 
   return (
-    <ol className="space-y-2">
+    <ol className="space-y-3">
       {names.map((name, i) => {
         const row = syncedRows[i];
         return (
@@ -81,15 +81,17 @@ export default function AdminNameList({ names, onEdit, onDelete }: Props) {
                 />
                 <button
                   onClick={() => saveEdit(i)}
-                  className="text-xs font-medium text-green-700 hover:text-green-900 transition-colors shrink-0"
+                  className="p-1.5 rounded-md text-green-600 hover:bg-green-50 hover:text-green-800 transition-colors shrink-0"
+                  title="Guardar"
                 >
-                  Guardar
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                 </button>
                 <button
                   onClick={() => cancelEdit(i)}
-                  className="text-xs text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+                  className="p-1.5 rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors shrink-0"
+                  title="Cancelar"
                 >
-                  Cancelar
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </>
             ) : (
@@ -97,15 +99,17 @@ export default function AdminNameList({ names, onEdit, onDelete }: Props) {
                 <span className="flex-1 text-sm text-gray-700">{name}</span>
                 <button
                   onClick={() => startEdit(i)}
-                  className="text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors shrink-0"
+                  className="p-1.5 rounded-md text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors shrink-0"
+                  title="Editar"
                 >
-                  Editar
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                 </button>
                 <button
                   onClick={() => onDelete(i)}
-                  className="text-xs font-medium text-red-500 hover:text-red-700 transition-colors shrink-0"
+                  className="p-1.5 rounded-md text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors shrink-0"
+                  title="Eliminar"
                 >
-                  Eliminar
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                 </button>
               </>
             )}

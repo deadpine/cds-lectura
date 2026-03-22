@@ -21,8 +21,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-white">
       <div className="max-w-lg mx-auto px-4 py-12 flex flex-col gap-8">
         <header className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Club del Sur</h1>
-          <p className="text-sm text-gray-400 mt-1">Próxima reunión</p>
+          
         </header>
 
         <MeetingCard meeting={data.meeting} />

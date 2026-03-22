@@ -19,10 +19,8 @@ export default function WaitlistSection({ waitlist, onAdd }: Props) {
         )}
       </div>
 
-      {waitlist.length === 0 ? (
-        <p className="text-sm text-gray-400 italic">Lista de espera vacía.</p>
-      ) : (
-        <ol className="space-y-1.5">
+      {waitlist.length > 0 && (
+        <ol className="space-y-2.5">
           {waitlist.map((name, i) => (
             <li key={i} className="flex items-center gap-3">
               <span className="text-xs text-gray-400 w-5 text-right shrink-0">{i + 1}.</span>

@@ -13,7 +13,7 @@ export default function SignupList({ signups, spotsLeft }: Props) {
     : `${spotsLeft} ${spotsLeft === 1 ? "lugar disponible" : "lugares disponibles"}`;
 
   const badgeClass = isFull
-    ? "bg-red-100 text-red-700"
+    ? "bg-blue-100 text-blue-700"
     : "bg-green-100 text-green-700";
 
   return (
@@ -28,7 +28,7 @@ export default function SignupList({ signups, spotsLeft }: Props) {
       {signups.length === 0 ? (
         <p className="text-sm text-gray-400 italic">Nadie inscrito aún.</p>
       ) : (
-        <ol className="space-y-1.5">
+        <ol className="space-y-2.5">
           {signups.map((name, i) => (
             <li key={i} className="flex items-center gap-3">
               <span className="text-xs text-gray-400 w-5 text-right shrink-0">{i + 1}.</span>
