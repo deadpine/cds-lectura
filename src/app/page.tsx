@@ -18,7 +18,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gray-50">
       <div className="max-w-lg mx-auto px-4 py-12 flex flex-col gap-8">
         <header className="text-center">
           
