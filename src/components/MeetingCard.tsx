@@ -28,43 +28,29 @@ export default function MeetingCard({ meeting }: Props) {
   if (meeting.date) {
     const [year, month, day] = meeting.date.split("-").map(Number);
     const d = new Date(year, month - 1, day);
-    formattedDate = d.toLocaleDateString("es-CL", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    const weekday = d.toLocaleDateString("es-CL", { weekday: "long" });
+    const dayMonth = d.toLocaleDateString("es-CL", { day: "numeric", month: "long" });
+    formattedDate = `${weekday} ${dayMonth}`;
   }
 
   const relativeLabel = getRelativeLabel(meeting.date);
 
+  function formatTime(t: string): string {
+    const [h, m] = t.split(":").map(Number);
+    const suffix = h >= 12 ? "pm" : "am";
+    const hour = h % 12 || 12;
+    return m ? `${hour}:${String(m).padStart(2, "0")}${suffix}` : `${hour}${suffix}`;
+  }
+
   const timeRange =
     meeting.timeStart && meeting.timeEnd
-      ? `${meeting.timeStart} – ${meeting.timeEnd}`
-      : meeting.timeStart || "";
+      ? `${meeting.timeStart} - ${meeting.timeEnd}hs`
+      : meeting.timeStart ? `${meeting.timeStart}hs` : "";
 
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm space-y-3">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm space-y-3 text-center">
       <div>
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Cuándo</p>
-        <p className="text-gray-800 font-medium capitalize">
-          {formattedDate}
-          {relativeLabel && (
-            <span className={`ml-2 text-xs font-medium px-2 py-0.5 rounded-full ${
-              relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
-              relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
-              "bg-amber-100 text-amber-700"
-            }`}>
-              {relativeLabel}
-            </span>
-          )}
-        </p>
-        {timeRange && (
-          <p className="text-sm text-gray-500 mt-0.5">{timeRange}</p>
-        )}
-      </div>
-      <div>
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Libro</p>
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Próximo encuentro</p>
         {meeting.bookTitle ? (
           meeting.bookUrl ? (
             <a
@@ -80,6 +66,20 @@ export default function MeetingCard({ meeting }: Props) {
           )
         ) : (
           <p className="text-gray-400 italic">Próximamente...</p>
+        )}
+      </div>
+      <div>
+        <p className="text-gray-800 font-medium">
+          {formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}{timeRange ? `, ${timeRange}` : ""}
+        </p>
+        {relativeLabel && (
+          <span className={`inline-block mt-1.5 text-xs font-medium px-2 py-0.5 rounded-full ${
+            relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
+            relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
+            "bg-amber-100 text-amber-700"
+          }`}>
+            {relativeLabel}
+          </span>
         )}
       </div>
     </div>

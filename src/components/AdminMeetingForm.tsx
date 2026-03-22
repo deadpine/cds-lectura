@@ -79,7 +79,7 @@ export default function AdminMeetingForm({ meeting, onSave }: Props) {
           type="text"
           value={form.bookTitle}
           onChange={(e) => setForm((f) => ({ ...f, bookTitle: e.target.value }))}
-          placeholder="Nombre del libro"
+          placeholder="Nombre de la lectura"
           maxLength={200}
           className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-300 placeholder:text-gray-400"
         />
