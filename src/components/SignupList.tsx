@@ -19,7 +19,7 @@ export default function SignupList({ signups, spotsLeft }: Props) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-gray-800">Inscritos</h2>
+        <h2 className="text-base font-semibold text-gray-800">Participantes</h2>
         <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${badgeClass}`}>
           {badgeText}
         </span>

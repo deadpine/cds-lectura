@@ -48,7 +48,7 @@ export default function AdminPage() {
 
         <section className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-base font-semibold text-gray-800 mb-4">
-            Inscritos{" "}
+            Participantes{" "}
             <span className="text-gray-400 font-normal text-sm">
               ({data.signups.length}/8)
             </span>
