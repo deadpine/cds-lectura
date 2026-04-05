@@ -32,7 +32,7 @@ export default function WaitlistSection({ waitlist, onAdd }: Props) {
 
       <AddNameForm
         onAdd={onAdd}
-        label="Unirme a la lista de espera"
+        label="Unirme"
         placeholder="Tu nombre"
       />
     </div>
