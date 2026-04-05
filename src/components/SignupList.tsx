@@ -16,7 +16,7 @@ export default function SignupList({ signups, spotsLeft, onAdd }: Props) {
     : `${spotsLeft} ${spotsLeft === 1 ? "lugar disponible" : "lugares disponibles"}`;
 
   const badgeClass = isFull
-    ? "bg-blue-100 text-blue-700"
+    ? "bg-green-100 text-green-700"
     : "bg-green-100 text-green-700";
 
   return (

@@ -15,10 +15,10 @@ function getRelativeLabel(dateStr: string): string | null {
   const diffMs = meeting.getTime() - today.getTime();
   const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
 
-  if (diffDays < 0) return "Pasada";
-  if (diffDays === 0) return "Hoy";
-  if (diffDays === 1) return "Mañana";
-  if (diffDays <= 7) return `En ${diffDays} días`;
+  if (diffDays < 0) return "pasada";
+  if (diffDays === 0) return "hoy";
+  if (diffDays === 1) return "mañana";
+  if (diffDays <= 7) return `[ en ${diffDays} días ]`;
   return null;
 }
 
@@ -52,17 +52,17 @@ export default function MeetingCard({ meeting }: Props) {
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-600">→ Próximo encuentro</p>
         {relativeLabel && (
-          <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
-            relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
-            relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
-            "bg-blue-100 text-blue-700"
+          <span className={`text-sm ${
+            relativeLabel === "pasada" ? "text-gray-500" :
+            relativeLabel === "hoy" ? "text-green-700" :
+            "text-gray-600"
           }`}>
             {relativeLabel}
           </span>
         )}
       </div>
       
-      <p className="text-3xl pt-10 pb-8 text-gray-900 text-center">
+      <p className="text-3xl pt-9 pb-8 text-gray-900 text-center">
         {formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}
         {/* {timeRange ? `, ${timeRange}` : ""} */}
       </p>
