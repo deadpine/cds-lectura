@@ -82,6 +82,12 @@ export function useAppData() {
   async function deleteSignup(index: number) {
     const id = signupIds[index];
     if (!id) return;
+    // Optimistic update
+    setData((prev) => ({
+      ...prev,
+      signups: prev.signups.filter((_, i) => i !== index),
+    }));
+    setSignupIds((prev) => prev.filter((_, i) => i !== index));
     await supabase.from("signups").delete().eq("id", id);
     // Auto-promote first person on waitlist
     if (waitlistIds.length > 0) {
@@ -103,6 +109,12 @@ export function useAppData() {
   async function deleteWaitlist(index: number) {
     const id = waitlistIds[index];
     if (!id) return;
+    // Optimistic update
+    setData((prev) => ({
+      ...prev,
+      waitlist: prev.waitlist.filter((_, i) => i !== index),
+    }));
+    setWaitlistIds((prev) => prev.filter((_, i) => i !== index));
     await supabase.from("waitlist").delete().eq("id", id);
     await fetchAll();
   }
