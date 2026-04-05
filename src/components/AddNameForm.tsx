@@ -30,7 +30,7 @@ export default function AddNameForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 pt-2 max-w-full">
+    <form onSubmit={handleSubmit} className="flex gap-2 pt-2 w-full min-w-0">
       <input
         type="text"
         value={name}
@@ -38,7 +38,7 @@ export default function AddNameForm({
         placeholder={placeholder}
         maxLength={60}
         disabled={loading}
-        className="flex-1 text-sm border border-gray-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-300 placeholder:text-gray-400 disabled:opacity-50"
+        className="flex-1 min-w-0 text-sm border border-gray-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-300 placeholder:text-gray-400 disabled:opacity-50"
       />
       <button
         type="submit"
