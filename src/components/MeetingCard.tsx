@@ -48,26 +48,40 @@ export default function MeetingCard({ meeting }: Props) {
       : meeting.timeStart ? `${meeting.timeStart}hs` : "";
 
   return (
-    <div className="py-4 text-center space-y-1">
-    
-      <p className="text-xs text-gray-500">Próximo encuentro</p>
+    <div className="space-y-1 p-5 bg-white rounded-2xl shadow-sm">
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-gray-600">→ Próximo encuentro</p>
+        {relativeLabel && (
+          <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
+            relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
+            relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
+            "bg-blue-100 text-blue-700"
+          }`}>
+            {relativeLabel}
+          </span>
+        )}
+      </div>
       
-      <div className="space-y-1 py-2">
-        <p className="text-2xl font-semibold text-gray-900">{meeting.bookTitle}</p>
-        <p className="text-gray-600">
-          {formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}{timeRange ? `, ${timeRange}` : ""}
+      <p className="text-3xl pt-10 pb-8 text-gray-900 text-center">
+        {formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)}
+        {/* {timeRange ? `, ${timeRange}` : ""} */}
+      </p>
+
+      <div className="space-y-1 bg-blue-50 p-4 rounded-lg">
+        <p className="text-gray-600 flex items-start gap-4">
+          <span className="text-2xl">📖</span>
+          <span className="flex flex-col">
+            <span className="text-gray-800">"{meeting.bookTitle}"</span>
+            {meeting.bookUrl && (
+              <a href={meeting.bookUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 underline hover:text-blue-800 break-all">
+                {meeting.bookUrl}
+              </a>
+            )}
+          </span>
         </p>
       </div>
       
-      {relativeLabel && (
-        <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
-          relativeLabel === "Pasada" ? "bg-gray-100 text-gray-500" :
-          relativeLabel === "Hoy" ? "bg-green-100 text-green-700" :
-          "bg-amber-100 text-amber-700"
-        }`}>
-          {relativeLabel}
-        </span>
-      )}
+      
     
     </div>
   );

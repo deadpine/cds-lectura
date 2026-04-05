@@ -61,7 +61,7 @@ export default function AdminPage() {
         </section>
 
         {data.waitlist.length > 0 && (
-          <section className="bg-white rounded-xl shadow-sm p-6">
+          <section className="">
             <h2 className="text-base font-semibold text-gray-800 mb-4">
               Lista de espera{" "}
               <span className="text-gray-400 font-normal text-sm">

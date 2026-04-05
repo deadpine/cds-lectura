@@ -1,11 +1,14 @@
 "use client";
 
+import AddNameForm from "./AddNameForm";
+
 interface Props {
   signups: string[];
   spotsLeft: number;
+  onAdd?: (name: string) => void | Promise<void>;
 }
 
-export default function SignupList({ signups, spotsLeft }: Props) {
+export default function SignupList({ signups, spotsLeft, onAdd }: Props) {
   const isFull = spotsLeft === 0;
 
   const badgeText = isFull
@@ -17,7 +20,7 @@ export default function SignupList({ signups, spotsLeft }: Props) {
     : "bg-green-100 text-green-700";
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 p-5 bg-white rounded-2xl shadow-sm">
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-gray-800">Participantes</h2>
         <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${badgeClass}`}>
@@ -36,6 +39,10 @@ export default function SignupList({ signups, spotsLeft }: Props) {
             </li>
           ))}
         </ol>
+      )}
+
+      {onAdd && spotsLeft > 0 && (
+        <AddNameForm onAdd={onAdd} label="Inscribirme" />
       )}
     </div>
   );

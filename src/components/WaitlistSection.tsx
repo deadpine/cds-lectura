@@ -9,7 +9,7 @@ interface Props {
 
 export default function WaitlistSection({ waitlist, onAdd }: Props) {
   return (
-    <div className="space-y-4 border-t border-gray-100 pt-6">
+    <div className="space-y-4 p-5 bg-white rounded-2xl shadow-sm">
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-gray-800">Lista de espera</h2>
         {waitlist.length > 0 && (
@@ -32,8 +32,8 @@ export default function WaitlistSection({ waitlist, onAdd }: Props) {
 
       <AddNameForm
         onAdd={onAdd}
-        label="Unirme a la espera"
-        placeholder="Tu nombre..."
+        label="Unirme a la lista"
+        placeholder="Tu nombre"
       />
     </div>
   );

@@ -11,7 +11,7 @@ interface Props {
 export default function AddNameForm({
   onAdd,
   label = "Agregar mi nombre",
-  placeholder = "Tu nombre...",
+  placeholder = "Tu nombre",
 }: Props) {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ export default function AddNameForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 mt-4">
+    <form onSubmit={handleSubmit} className="flex gap-2 pt-2 max-w-full">
       <input
         type="text"
         value={name}

@@ -3,7 +3,6 @@
 import { useAppData } from "@/lib/useAppData";
 import MeetingCard from "@/components/MeetingCard";
 import SignupList from "@/components/SignupList";
-import AddNameForm from "@/components/AddNameForm";
 import WaitlistSection from "@/components/WaitlistSection";
 
 export default function HomePage() {
@@ -18,19 +17,16 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4">
+    <main className="min-h-screen bg-gray-100 py-12 px-4">
       <header className="text-center">
       </header>
       
-      <div className="max-w-lg mx-auto flex flex-col gap-6 bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+      <div className="max-w-md mx-auto flex flex-col">
         
         <MeetingCard meeting={data.meeting} />
 
         <section className="space-y-0">
-          <SignupList signups={data.signups} spotsLeft={spotsLeft} />
-          {!isFull && (
-            <AddNameForm onAdd={addSignup} label="Inscribirme" />
-          )}
+          <SignupList signups={data.signups} spotsLeft={spotsLeft} onAdd={!isFull ? addSignup : undefined} />
         </section>
 
         {isFull && (
