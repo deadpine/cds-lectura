@@ -24,30 +24,17 @@ export default function AdminPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-lg mx-auto px-4 py-12 flex flex-col gap-8">
-        <header className="flex items-baseline justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Administración</h1>
-            <p className="text-sm text-gray-400 mt-0.5">Club del Sur</p>
-          </div>
-          <a
-            href="/"
-            className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
-          >
-            ← Ver página
-          </a>
-        </header>
-
-        <section className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-base font-semibold text-gray-800 mb-4">
-            Información de la reunión
+    <main className="min-h-screen bg-gray-50 py-12 px-4">
+      <div className="max-w-md mx-auto flex flex-col gap-4">
+<section className="bg-white rounded-2xl shadow-sm p-5 space-y-4">
+          <h2 className="text-base font-semibold text-gray-800">
+            Información del encuentro
           </h2>
           <AdminMeetingForm meeting={data.meeting} onSave={updateMeeting} />
         </section>
 
-        <section className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-base font-semibold text-gray-800 mb-4">
+        <section className="bg-white rounded-2xl shadow-sm p-5 space-y-4">
+          <h2 className="text-base font-semibold text-gray-800">
             Participantes{" "}
             <span className="text-gray-400 font-normal text-sm">
               ({data.signups.length}/8)
@@ -61,8 +48,8 @@ export default function AdminPage() {
         </section>
 
         {data.waitlist.length > 0 && (
-          <section className="">
-            <h2 className="text-base font-semibold text-gray-800 mb-4">
+          <section className="bg-white rounded-2xl shadow-sm p-5 space-y-4">
+            <h2 className="text-base font-semibold text-gray-800">
               Lista de espera{" "}
               <span className="text-gray-400 font-normal text-sm">
                 ({data.waitlist.length})

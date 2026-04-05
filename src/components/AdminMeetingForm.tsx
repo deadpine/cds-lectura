@@ -87,7 +87,7 @@ export default function AdminMeetingForm({ meeting, onSave }: Props) {
 
       <div className="space-y-1">
         <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-          URL
+          Link
         </label>
         <input
           type="url"
